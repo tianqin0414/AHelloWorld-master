@@ -25,15 +25,7 @@ class CountDown extends Component {
 		this.state = {
 			count: 10,
 		};
-		this.timer = setInterval(() => {
-			const { count } = this.state;
-			if (count === 0) {
-				return clearInterval(this.timer);
-			}
-			this.setState({
-				count: count - 1,
-			});
-		}, 500);
+
 	}
 
   renderResult=() => {
@@ -54,7 +46,18 @@ class CountDown extends Component {
   add = (time) => {
   	this.setState({
   		count: this.state.count + time
+  	}, () => {
+  		this.timer = setInterval(() => {
+  			const { count } = this.state;
+  			if (count === 0) {
+  				return clearInterval(this.timer);
+  			}
+  			this.setState({
+  				count: count - 1,
+  			});
+  		}, 500);
   	});
+
   }
 
   componentDidMount() {
