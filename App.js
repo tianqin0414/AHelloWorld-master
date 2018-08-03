@@ -56,7 +56,7 @@ class CountDown extends Component {
   				count: count - 1,
   			});
   		}, 500);
-  	});
+  	 });
 
   }
 
